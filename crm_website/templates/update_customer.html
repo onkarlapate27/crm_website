@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{%if user.is_authenticated%}
+
+{% if customer_details %}
+<div class="col-md-6 offset-md-3">
+    <h1 class="mb-4">Update Customer</h1>
+    <form action="{% url 'update' customer_details.id%}" method="post">
+        {% csrf_token %}
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control mb-2" name="first_name" value="{{ customer_details.first_name }}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="last_name" value="{{ customer_details.last_name }}">
+            </div>
+            <div class="form-group">
+                <input type="number" class="form-control mb-3" name="phone" value="{{ customer_details.phone }}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="address" value="{{ customer_details.address }}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="city" value="{{ customer_details.city }}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="pincode" value="{{ customer_details.pincode }}">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="country" value="{{ customer_details.country }}">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </form>
+</div>
+
+{%endif%}
+{%endif%}
+
+{% endblock %}
