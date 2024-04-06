@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{%if user.is_authenticated%}
+
+<table class="table table-stripped table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Address</th>
+        <th scope="col">City</th>
+        <th scope="col">Country</th>
+        <th scope="col">Pincode</th>
+        <th scope="col">Created At</th>
+      </tr>
+    </thead>
+    {%if all_customers_data%}
+    <tbody>
+    {% for customer in all_customers_data%}
+      <tr>
+        <td>{{customer.first_name}} {{customer.last_name}}</td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.city}}</td>
+        <td>{{customer.country}}</td>
+        <td>{{customer.pincode}}</td>
+        <td>{{customer.created_at}}</td>
+        <td><a href="{% url 'update' customer.id%}"><button type="button" class="btn btn-primary btn-sm">Edit</button>
+        </a></td>
+        <td><a href="{% url 'delete' customer.id%}"><button type="button" class="btn btn-danger btn-sm">Delete</button>
+        </a></td>
+      </tr>
+    {%endfor%}
+    </tbody>
+    {%else%}
+    <div class="alert alert-primary" role="alert">
+      No customer data present, add to get started!
+    </div>
+    {%endif%}
+    {%endif%}
+  </table>
+
+{% endblock %}

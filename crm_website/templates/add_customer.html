@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{%if user.is_authenticated%}
+
+<div class="col-md-6 offset-md-3">
+    <h1 class="mb-4">Login</h1>
+    <form action="{% url 'add' %}" method="post">
+        {% csrf_token %}
+        <form>
+            <div class="form-group">
+                <input type="text" class="form-control mb-2" name="first_name" placeholder="First Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="last_name" placeholder="Last Name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="phone" placeholder="Phone">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="address" placeholder="Address">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="city" placeholder="City">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="pincode" placeholder="Pincode/Zipcode">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control mb-3" name="country" placeholder="Country">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </form>
+</div>
+
+{%endif%}
+
+{% endblock %}

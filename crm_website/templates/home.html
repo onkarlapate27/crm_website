@@ -3,7 +3,9 @@
 {% block content %}
 {% if user.is_authenticated%}
 
-<h1>Hello!!</h1>
+<h1 class="display-2">Welcome to CRM App</h1>
+
+<h1 class="display-4">Head on to customers listing Page <a href="{% url 'customers' %}">here</a></h1>
 
 {% else %}
 <div class="col-md-6 offset-md-3">
