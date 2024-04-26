@@ -15,6 +15,7 @@ def list_customers(request):
 def add_customer(request):
     try:
         if request.method == 'POST':
+            email = request.POST.get('email')
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
             phone = request.POST.get('phone')
@@ -24,6 +25,7 @@ def add_customer(request):
             country = request.POST.get('country')
 
             customer = Customer()
+            customer.email = email
             customer.first_name = first_name
             customer.last_name = last_name
             customer.phone = phone
@@ -51,6 +53,7 @@ def update_customer(request, customer_id):
             return redirect('customers')
 
         if request.method == 'POST':
+            email = request.POST.get('email')
             first_name = request.POST.get('first_name')
             last_name = request.POST.get('last_name')
             phone = request.POST.get('phone')
@@ -59,6 +62,7 @@ def update_customer(request, customer_id):
             pincode = request.POST.get('pincode')
             country = request.POST.get('country')
 
+            customer_data.email = email
             customer_data.first_name = first_name
             customer_data.last_name = last_name
             customer_data.phone = phone
