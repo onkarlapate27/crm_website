@@ -56,7 +56,7 @@ def register_user(request):
             # Check if the username already exists
             if User.objects.filter(username=username).exists():
                 messages.error(request, "Username already exists. Proceed to Login.")
-                return redirect('register')
+                return redirect('home')
 
             # Create user
             user = User.objects.create(
